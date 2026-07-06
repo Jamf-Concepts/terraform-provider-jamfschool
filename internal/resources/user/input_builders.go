@@ -37,8 +37,8 @@ func buildUpdateInput(plan, state *UserResourceModel) jamfschool.UserUpdateInput
 		LastName:      plan.LastName.ValueString(),
 		Domain:        plan.MailContactsCalendarsDomain.ValueString(),
 		Notes:         plan.Notes.ValueString(),
-		Exclude:       helpers.Ptr(plan.Exclude.ValueBool()),
-		StorePassword: helpers.Ptr(plan.StoreMailContactsCalendars.ValueBool()),
+		Exclude:       new(plan.Exclude.ValueBool()),
+		StorePassword: new(plan.StoreMailContactsCalendars.ValueBool()),
 	}
 	if !plan.Password.Equal(state.Password) {
 		input.Password = plan.Password.ValueString()

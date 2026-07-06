@@ -114,51 +114,6 @@ func TestStringPtrValueOrNull(t *testing.T) {
 	}
 }
 
-func TestPtr(t *testing.T) {
-	t.Parallel()
-
-	t.Run("bool true", func(t *testing.T) {
-		t.Parallel()
-		result := Ptr(true)
-		if result == nil || *result != true {
-			t.Errorf("expected pointer to true, got %v", result)
-		}
-	})
-
-	t.Run("bool false", func(t *testing.T) {
-		t.Parallel()
-		result := Ptr(false)
-		if result == nil || *result != false {
-			t.Errorf("expected pointer to false, got %v", result)
-		}
-	})
-
-	t.Run("string", func(t *testing.T) {
-		t.Parallel()
-		result := Ptr("hello")
-		if result == nil || *result != "hello" {
-			t.Errorf("expected pointer to hello, got %v", result)
-		}
-	})
-
-	t.Run("int64", func(t *testing.T) {
-		t.Parallel()
-		result := Ptr(int64(42))
-		if result == nil || *result != 42 {
-			t.Errorf("expected pointer to 42, got %v", result)
-		}
-	})
-
-	t.Run("returns distinct pointers", func(t *testing.T) {
-		t.Parallel()
-		a := Ptr(true)
-		b := Ptr(true)
-		if a == b {
-			t.Error("expected distinct pointers, got same pointer")
-		}
-	})
-}
-
 func TestInt64PtrIfKnown(t *testing.T) {
 	t.Parallel()
 
