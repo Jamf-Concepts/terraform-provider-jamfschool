@@ -5,13 +5,6 @@ package helpers
 
 import "github.com/hashicorp/terraform-plugin-framework/types"
 
-// Ptr returns a pointer to any value.
-//
-//go:fix inline
-func Ptr[T any](v T) *T {
-	return new(v)
-}
-
 // Int64PtrIfKnown returns a pointer to the int64 value if set, nil otherwise.
 func Int64PtrIfKnown(v types.Int64) *int64 {
 	if v.IsNull() || v.IsUnknown() {
