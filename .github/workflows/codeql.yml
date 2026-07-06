@@ -1,16 +1,16 @@
 name: CodeQL
 
 on:
+  push:
+    branches: [main]
   pull_request:
+    branches: [main]
   schedule:
     - cron: "0 6 * * 1"
 
 permissions:
   contents: read
   security-events: write
-
-env:
-  GOPRIVATE: github.com/Jamf-Concepts/*
 
 jobs:
   analyze:
@@ -23,9 +23,6 @@ jobs:
         with:
           go-version-file: "go.mod"
           cache: true
-
-      - name: Configure private modules
-        run: git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
